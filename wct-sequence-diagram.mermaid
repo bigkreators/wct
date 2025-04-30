@@ -1,0 +1,67 @@
+sequenceDiagram
+    participant User
+    participant Wiki Frontend
+    participant Backend API
+    participant Solana Wallet
+    participant Solana Blockchain
+
+    Note over User, Solana Blockchain: External Entrypoint 1: Wiki Contribution
+    User->>Wiki Frontend: Create/Edit Wiki Content
+    Wiki Frontend->>Backend API: Submit Contribution
+    Backend API->>Backend API: Calculate Points (Quality, Reputation, Demand)
+    Backend API->>Backend API: Store Contribution & Points
+    Backend API->>Wiki Frontend: Return Confirmation
+    Wiki Frontend->>User: Display Updated Points
+
+    Note over User, Solana Blockchain: External Entrypoint 2: Weekly Token Distribution
+    Backend API->>Backend API: Calculate Weekly Reward Distribution
+    Backend API->>Solana Blockchain: Submit Distribution Transaction
+    Solana Blockchain->>Solana Blockchain: Transfer Tokens to User Wallets
+    Solana Blockchain->>User: Notification of Tokens Received
+
+    Note over User, Solana Blockchain: External Entrypoint 3: Token Staking
+    User->>Wiki Frontend: Open Staking Interface
+    Wiki Frontend->>Solana Wallet: Request Connection
+    Solana Wallet->>User: Request Approval
+    User->>Solana Wallet: Approve Connection
+    Solana Wallet->>Wiki Frontend: Return Connection
+    User->>Wiki Frontend: Enter Stake Amount & Duration
+    Wiki Frontend->>Solana Wallet: Create Stake Transaction
+    Solana Wallet->>User: Request Transaction Approval
+    User->>Solana Wallet: Approve Transaction
+    Solana Wallet->>Solana Blockchain: Submit Stake Transaction
+    Solana Blockchain->>Solana Blockchain: Lock Tokens in Staking Contract
+    Solana Blockchain->>Wiki Frontend: Return Transaction Confirmation
+    Wiki Frontend->>User: Display Staking Status
+
+    Note over User, Solana Blockchain: External Entrypoint 4: Claim Staking Rewards
+    User->>Wiki Frontend: Request Reward Claim
+    Wiki Frontend->>Solana Wallet: Create Claim Transaction
+    Solana Wallet->>User: Request Transaction Approval
+    User->>Solana Wallet: Approve Transaction
+    Solana Wallet->>Solana Blockchain: Submit Claim Transaction
+    Solana Blockchain->>Solana Blockchain: Calculate Rewards
+    Solana Blockchain->>Solana Blockchain: Transfer Rewards to User
+    Solana Blockchain->>Wiki Frontend: Return Transaction Confirmation
+    Wiki Frontend->>User: Display Updated Rewards
+
+    Note over User, Solana Blockchain: External Entrypoint 5: Governance Proposal
+    User->>Wiki Frontend: Create Governance Proposal
+    Wiki Frontend->>Solana Wallet: Create Proposal Transaction
+    Solana Wallet->>User: Request Transaction Approval
+    User->>Solana Wallet: Approve Transaction
+    Solana Wallet->>Solana Blockchain: Submit Proposal Transaction
+    Solana Blockchain->>Solana Blockchain: Verify Proposal Requirements
+    Solana Blockchain->>Solana Blockchain: Create Proposal Record
+    Solana Blockchain->>Wiki Frontend: Return Transaction Confirmation
+    Wiki Frontend->>User: Display Proposal Status
+
+    Note over User, Solana Blockchain: External Entrypoint 6: Voting on Proposal
+    User->>Wiki Frontend: Cast Vote on Proposal
+    Wiki Frontend->>Solana Wallet: Create Vote Transaction
+    Solana Wallet->>User: Request Transaction Approval
+    User->>Solana Wallet: Approve Transaction
+    Solana Wallet->>Solana Blockchain: Submit Vote Transaction
+    Solana Blockchain->>Solana Blockchain: Record Vote with Weight
+    Solana Blockchain->>Wiki Frontend: Return Transaction Confirmation
+    Wiki Frontend->>User: Display Updated Vote Status
