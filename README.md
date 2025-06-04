@@ -1,7 +1,7 @@
-# Wiki Contribution Token (WCT) Tokenomics
+# Kryptopedia Contribution Token (KCT) Tokenomics
 
 ## Overview
-Wiki Contribution Token (WCT) is a Solana-based reward token designed to incentivize high-quality contributions to our wiki platform. The token creates a sustainable economy that rewards content creators, curators, and active community members.
+Wiki Contribution Token (KCT) is a Solana-based reward token designed to incentivize high-quality contributions to our wiki platform. The token creates a sustainable economy that rewards content creators, curators, and active community members.
 
 ## Token Utility
 - Reward content creation and curation
